@@ -13,16 +13,11 @@
       border-radius: 8px;
       margin-bottom: 20px;
     }
-    nav h2 { margin-top: 0; }
-    nav a {
-      display: block;
-      margin: 5px 0;
-      color: #0066cc;
-      text-decoration: none;
-    }
+    nav h2 { margin-top: 0; cursor: pointer; }
+    nav a { display: block; margin: 5px 0; color: #0066cc; text-decoration: none; }
     nav a:hover { text-decoration: underline; }
 
-    /* 折りたたみ用 */
+    /* サブ章折りたたみ */
     .toc-sub { display: none; margin-left: 15px; }
     .toc-item.active .toc-sub { display: block; }
     .toc-toggle { cursor: pointer; display: block; }
@@ -33,46 +28,12 @@
     figure { margin: 0; }
     figcaption { font-size: 0.9em; color: #555; margin-bottom: 20px; }
 
-    /* ボタン風リンク */
-    a.button-link {
-      display: inline-block;
-      background-color: #2a7ae2;
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background-color 0.2s;
-    }
+    a.button-link { display: inline-block; background-color: #2a7ae2; color: #fff; padding: 6px 12px; border-radius: 5px; text-decoration: none; transition: background-color 0.2s; }
     a.button-link:hover { background-color: #1c5bb8; }
 
-    /* モーダル */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.8);
-    }
-    .modal-content {
-      margin: 5% auto;
-      display: block;
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-    }
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 30px;
-      color: #fff;
-      font-size: 30px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
+    .modal-content { margin: 5% auto; display: block; max-width: 90%; max-height: 90%; border-radius: 8px; }
+    .modal-close { position: absolute; top: 15px; right: 30px; color: #fff; font-size: 30px; font-weight: bold; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -81,90 +42,55 @@
 
 <!-- 目次 -->
 <nav>
-  <h2>目次</h2>
-  <a href="#system">1. 本システムについて</a>
-  <a href="#caution">2. 注意事項</a>
-  <a href="#mechanism">3. 仕組み</a>
+  <h2 id="toc-toggle">目次 ▼</h2>
+  <div id="toc">
+    <a href="#system">1. 本システムについて</a>
+    <a href="#caution">2. 注意事項</a>
+    <a href="#mechanism">3. 仕組み</a>
 
-  <!-- 折りたたみ章 -->
-  <div class="toc-item">
-    <a class="toc-toggle">4. 操作方法 ▼</a>
-    <div class="toc-sub">
-      <a href="#operation-product">4-1 レジ:商品画面</a>
-      <a href="#operation-sales">4-2 レジ:会計</a>
-      <a href="#operation-history">4-3 レジ:取引履歴</a>
-      <a href="#operation-management">4-4 レジ:商品管理</a>
+    <div class="toc-item">
+      <a class="toc-toggle">4. 操作方法 ▼</a>
+      <div class="toc-sub">
+        <a href="#operation-product">4-1 レジ:商品画面</a>
+        <a href="#operation-sales">4-2 レジ:会計</a>
+        <a href="#operation-history">4-3 レジ:取引履歴</a>
+        <a href="#operation-management">4-4 レジ:商品管理</a>
+      </div>
     </div>
-  </div>
 
-  <a href="#rezi-system">5. レジシステム</a>
+    <a href="#rezi-system">5. レジシステム</a>
+  </div>
 </nav>
 
-<!-- 章1 -->
+<!-- メインコンテンツ -->
 <h2 id="system">1. 本システムについて</h2>
-<p>本システムはブラウザ上で動作する簡易レジです。祭り等のレジ管理を目的に作られています。pc/ipadで動作し、インターネット不要で利用可能です。</p>
+<p>本システムはブラウザ上で動作する簡易レジです。祭り等のレジ管理を目的に作られています。PC/iPadで動作し、インターネット不要で利用可能です。</p>
 
-<!-- 章2 -->
 <h2 id="caution">2. 注意事項</h2>
-<p>・オフライン対応してますが、起動するのにインターネット接続が必要です。リロードすると再起動扱いになり、オフライン環境では使えません。
-<br>・長時間使用による熱停止の可能性があります。起動済みの端末を複数台常備することを推奨します。
-<br>・iPhone/AndroidはUI非対応なのでPC/iPadで利用してください。
-</p>
+<p>・オフライン対応ですが、起動にはインターネット接続が必要です。リロードすると再起動扱いになり、オフライン環境では使用できません。<br>
+・長時間使用による熱停止の可能性があります。複数端末の常備を推奨します。<br>
+・iPhone/AndroidはUI非対応なのでPC/iPadで使用してください。</p>
 
-<!-- 章3 -->
 <h2 id="mechanism">3. 仕組み</h2>
-<p>・履歴等の保存はLocalStorageを利用しています。JavaScriptでブラウザにデータを保存できます。
-<br>・複数端末のデータ同期はサーバー経由で行います。オフライン使用後、オンラインに戻るとデータがサーバーに送信されます。
-</p>
+<p>・履歴等の保存はLocalStorageを利用しています。<br>
+・複数端末のデータ同期はサーバー経由で行います。</p>
 
-<!-- 章4 操作方法 -->
 <h2 id="operation">4. 操作方法</h2>
 
 <h3 id="operation-product">4-1 レジ:商品画面</h3>
-<p>お客様の注文を受け付け、内容を入力します。</p>
-<figure>
-  <img src="images/product-ipad.png" alt="レジ商品画面">
-  <figcaption>商品画面スクリーンショット</figcaption>
-</figure>
-<p><strong>【使い方】</strong></p>
-<p>・左側の商品リストから商品をタップしてカートに入れます。<br>
-・間違えた場合は横の[＋/－]で調整。[❌]で商品を全削除可能。<br>
-・[会計へ進む]で次の画面に進みます。</p>
+<p>商品画面の説明</p>
 
 <h3 id="operation-sales">4-2 レジ:会計</h3>
-<p>お客様から代金を受け取り、お釣りを計算します。</p>
-<figure>
-  <img src="images/sales-ipad.png" alt="レジ会計画面">
-  <figcaption>会計画面スクリーンショット</figcaption>
-</figure>
-<p><strong>【使い方】</strong></p>
-<p>右側のテンキーでお預かり金額を入力し、お釣りを確認して会計終了です。</p>
+<p>会計画面の説明</p>
 
 <h3 id="operation-history">4-3 レジ:取引履歴</h3>
-<p>取引履歴を確認できます。</p>
-<figure>
-  <img src="images/history-ipad.png" alt="取引履歴画面">
-  <figcaption>取引履歴画面スクリーンショット</figcaption>
-</figure>
-<p><strong>【使い方】</strong></p>
-<p>[すべて/今日のみ/日付指定]で履歴を切替。検索やCSV出力も可能。</p>
+<p>取引履歴の説明</p>
 
 <h3 id="operation-management">4-4 レジ:商品管理</h3>
-<p>商品追加・編集・削除を行えます。</p>
-<figure>
-  <img src="images/management-ipad.png" alt="商品管理画面">
-  <figcaption>商品管理画面スクリーンショット</figcaption>
-</figure>
-<p><strong>【使い方】</strong></p>
-<p>[商品名]・[値段]を入力して[追加]。編集・削除も可能。[初期商品に戻す]で全消去。</p>
+<p>商品管理の説明</p>
 
-<!-- 章5 レジシステム -->
 <h2 id="rezi-system">5. レジシステム</h2>
-<p>
-  <a href="https://sunaneko1223.github.io/ReziSystem/" target="_blank" class="button-link">
-    レジシステム本体はこちら
-  </a>
-</p>
+<p><a href="https://sunaneko1223.github.io/ReziSystem/" target="_blank" class="button-link">レジシステム本体はこちら</a></p>
 
 <!-- モーダル -->
 <div id="modal" class="modal">
@@ -186,7 +112,21 @@
   modalClose.onclick = () => modal.style.display = "none";
   modal.addEventListener('click', e => { if(e.target === modal) modal.style.display = "none"; });
 
-  // 目次折りたたみ
+  // 目次折りたたみ（全体）
+  const tocToggle = document.getElementById('toc-toggle');
+  const toc = document.getElementById('toc');
+  toc.style.display = "block"; // 初期表示
+  tocToggle.addEventListener('click', () => {
+    if(toc.style.display === "none") {
+      toc.style.display = "block";
+      tocToggle.textContent = "目次 ▼";
+    } else {
+      toc.style.display = "none";
+      tocToggle.textContent = "目次 ▲";
+    }
+  });
+
+  // サブ章折りたたみ
   document.querySelectorAll('.toc-toggle').forEach(toggle => {
     toggle.addEventListener('click', () => {
       toggle.parentElement.classList.toggle('active');
