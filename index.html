@@ -21,6 +21,12 @@
       text-decoration: none;
     }
     nav a:hover { text-decoration: underline; }
+
+    /* 折りたたみ用 */
+    .toc-sub { display: none; margin-left: 15px; }
+    .toc-item.active .toc-sub { display: block; }
+    .toc-toggle { cursor: pointer; display: block; }
+
     h2 { margin-top: 40px; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
     h3 { margin-top: 30px; }
     img { max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 6px; margin: 10px 0; cursor: pointer; }
@@ -38,7 +44,7 @@
       transition: background-color 0.2s;
     }
     a.button-link:hover { background-color: #1c5bb8; }
-    
+
     /* モーダル */
     .modal {
       display: none;
@@ -79,11 +85,18 @@
   <a href="#system">1. 本システムについて</a>
   <a href="#caution">2. 注意事項</a>
   <a href="#mechanism">3. 仕組み</a>
-  <a href="#operation">4. 操作方法</a>
-  <a href="#operation-product">　4-1 レジ:商品画面</a>
-  <a href="#operation-sales">　4-2 レジ:会計</a>
-  <a href="#operation-history">　4-3 レジ:取引履歴</a>
-  <a href="#operation-management">　4-4 レジ:商品管理</a>
+
+  <!-- 折りたたみ章 -->
+  <div class="toc-item">
+    <a class="toc-toggle">4. 操作方法 ▼</a>
+    <div class="toc-sub">
+      <a href="#operation-product">4-1 レジ:商品画面</a>
+      <a href="#operation-sales">4-2 レジ:会計</a>
+      <a href="#operation-history">4-3 レジ:取引履歴</a>
+      <a href="#operation-management">4-4 レジ:商品管理</a>
+    </div>
+  </div>
+
   <a href="#rezi-system">5. レジシステム</a>
 </nav>
 
@@ -93,24 +106,20 @@
 
 <!-- 章2 -->
 <h2 id="caution">2. 注意事項</h2>
-<p>・オフライン対応してますが、起動するのにインターネット接続が必要となります。そのためリロードすると再起動扱いとなり、オフライン環境では使えなくなります。
-<br>・リロード、端末再起動、スリープ等でシステムが使えなくなりますがWiFi共有して起動できます。(起動したらデザリングは切って大丈夫です)
-<br>・長時間の使用による熱停止の可能性があります。起動済みの端末を複数台常備することを推奨します。
-<br>・iPhone/AndroidはUIが対応してないのでpc/ipadで使ってください。
+<p>・オフライン対応してますが、起動するのにインターネット接続が必要です。リロードすると再起動扱いになり、オフライン環境では使えません。
+<br>・長時間使用による熱停止の可能性があります。起動済みの端末を複数台常備することを推奨します。
+<br>・iPhone/AndroidはUI非対応なのでPC/iPadで利用してください。
 </p>
 
 <!-- 章3 -->
 <h2 id="mechanism">3. 仕組み</h2>
-<p>・履歴等の保存
-<br>Localstorageを使っています。JavaScriptでユーザーのデータをウェブブラウザ(ローカル環境)に保存することができる仕組みです。これによりシステムを閉じても履歴は残ります。
-<br>・複数端末化のデータ同期
-<br>自分でサーバーを立てています。オフライン環境で使用後にオンライン環境になるとデータがサーバーに送信されます。これにより複数端末でもサーバーでのデータ同期が可能です。
+<p>・履歴等の保存はLocalStorageを利用しています。JavaScriptでブラウザにデータを保存できます。
+<br>・複数端末のデータ同期はサーバー経由で行います。オフライン使用後、オンラインに戻るとデータがサーバーに送信されます。
 </p>
 
 <!-- 章4 操作方法 -->
 <h2 id="operation">4. 操作方法</h2>
 
-<!-- 4-1 レジ:商品画面 -->
 <h3 id="operation-product">4-1 レジ:商品画面</h3>
 <p>お客様の注文を受け付け、内容を入力します。</p>
 <figure>
@@ -118,60 +127,41 @@
   <figcaption>商品画面スクリーンショット</figcaption>
 </figure>
 <p><strong>【使い方】</strong></p>
-<p>・左側の商品リストから商品をタップし、カートに入れます。
-<br>※商品をタップした回数分、ご注文内容に反映されます
-<br>・間違えた場合は横の[＋/－]で調整してください。[❌]をタップすると個数関係なく商品がご注文内容から減らされます。
-<br>・決まったら[会計へ進む]をタップして次の画面に進みます。
-</p>
+<p>・左側の商品リストから商品をタップしてカートに入れます。<br>
+・間違えた場合は横の[＋/－]で調整。[❌]で商品を全削除可能。<br>
+・[会計へ進む]で次の画面に進みます。</p>
 
-<!-- 4-2 レジ:会計 -->
 <h3 id="operation-sales">4-2 レジ:会計</h3>
-<p>お客様から代金を受けとり、お釣りを計算します。</p>
+<p>お客様から代金を受け取り、お釣りを計算します。</p>
 <figure>
   <img src="images/sales-ipad.png" alt="レジ会計画面">
   <figcaption>会計画面スクリーンショット</figcaption>
 </figure>
 <p><strong>【使い方】</strong></p>
-<p>・右側のテンキーを使ってお客様から預かった金額を入力します。
-<br>・左側の[お預かり金額]に表示され、お釣りがあれば表示されます。
-<br>・金額がピッタリorおつりを渡して会計終了です。
-<br>※お預かり金額が足りないときに[会計]をタップするとエラーがでて先に進めません。
-</p>
+<p>右側のテンキーでお預かり金額を入力し、お釣りを確認して会計終了です。</p>
 
-<!-- 4-3 レジ:取引履歴 -->
 <h3 id="operation-history">4-3 レジ:取引履歴</h3>
-<p> 取引履歴を確認できます。</p>
+<p>取引履歴を確認できます。</p>
 <figure>
   <img src="images/history-ipad.png" alt="取引履歴画面">
   <figcaption>取引履歴画面スクリーンショット</figcaption>
 </figure>
 <p><strong>【使い方】</strong></p>
-<p>表を見ればわかると思うのでボタンについて説明します。
-<br>・[すべて]は履歴の日付をかえて見ることができます。[すべて/今日のみ/日付指定]に変更できます。
-<br>・[検索]は商品名などを検索できます。クリアは検索内容を消すボタンです。
-<br>・[取引]は履歴内容を変えて見ることができます。[取引/日付/商品]に変更できます。
-<br>・[CSVダウンロード]は取引履歴をファイルに出力して保存できます。
-<br>・[削除]と[全削除]は履歴を消せます。違いは選んで削除できるか全部削除かです。
-</p>
+<p>[すべて/今日のみ/日付指定]で履歴を切替。検索やCSV出力も可能。</p>
 
-<!-- 4-4 レジ:商品管理 -->
 <h3 id="operation-management">4-4 レジ:商品管理</h3>
-<p> ここで商品を追加したりします。</p>
+<p>商品追加・編集・削除を行えます。</p>
 <figure>
   <img src="images/management-ipad.png" alt="商品管理画面">
   <figcaption>商品管理画面スクリーンショット</figcaption>
 </figure>
 <p><strong>【使い方】</strong></p>
-<p>・[商品名]に商品名、[値段]に値段を入力して[追加]をタップします。
-<br>・[編集]で商品名、値段を編集できます。
-<br>・[削除]で商品を削除します。
-<br>・[初期商品に戻す]で全部消せます。
-</p>
+<p>[商品名]・[値段]を入力して[追加]。編集・削除も可能。[初期商品に戻す]で全消去。</p>
 
-<!-- 5.レジシステム -->
+<!-- 章5 レジシステム -->
 <h2 id="rezi-system">5. レジシステム</h2>
 <p>
- <a href="https://sunaneko1223.github.io/ReziSystem/"target=_blank" class="button-link">
+  <a href="https://sunaneko1223.github.io/ReziSystem/" target="_blank" class="button-link">
     レジシステム本体はこちら
   </a>
 </p>
@@ -183,24 +173,25 @@
 </div>
 
 <script>
+  // 画像モーダル
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modal-img');
   const modalClose = document.getElementsByClassName('modal-close')[0];
-  const images = document.querySelectorAll('img');
-
-  images.forEach(img => {
+  document.querySelectorAll('img').forEach(img => {
     img.addEventListener('click', () => {
       modal.style.display = "block";
       modalImg.src = img.src;
     });
   });
-
-  modalClose.onclick = function() { modal.style.display = "none"; }
+  modalClose.onclick = () => modal.style.display = "none";
   modal.addEventListener('click', e => { if(e.target === modal) modal.style.display = "none"; });
+
+  // 目次折りたたみ
+  document.querySelectorAll('.toc-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      toggle.parentElement.classList.toggle('active');
+    });
+  });
 </script>
 </body>
 </html>
-
-
-
-
