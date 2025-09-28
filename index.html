@@ -7,17 +7,12 @@
   <style>
     body { font-family: sans-serif; padding: 15px; line-height: 1.6; max-width: 800px; margin: auto; }
     h1 { text-align: center; margin-bottom: 20px; }
-    nav {
-      background: #f2f2f2;
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
+    nav { background: #f2f2f2; padding: 10px; border-radius: 8px; margin-bottom: 20px; }
     nav h2 { margin-top: 0; cursor: pointer; }
     nav a { display: block; margin: 5px 0; color: #0066cc; text-decoration: none; }
     nav a:hover { text-decoration: underline; }
 
-    /* サブ章折りたたみ */
+    /* 折りたたみ用 */
     .toc-sub { display: none; margin-left: 15px; }
     .toc-item.active .toc-sub { display: block; }
     .toc-toggle { cursor: pointer; display: block; }
@@ -44,53 +39,95 @@
 <nav>
   <h2 id="toc-toggle">目次 ▼</h2>
   <div id="toc">
-    <a href="#system">1. 本システムについて</a>
+    <a href="#system">1. レジシステムについて</a>
     <a href="#caution">2. 注意事項</a>
-    <a href="#mechanism">3. 仕組み</a>
 
     <div class="toc-item">
-      <a class="toc-toggle">4. 操作方法 ▼</a>
+      <a class="toc-toggle">3. 操作方法 ▼</a>
       <div class="toc-sub">
-        <a href="#operation-product">4-1 レジ:商品画面</a>
-        <a href="#operation-sales">4-2 レジ:会計</a>
-        <a href="#operation-history">4-3 レジ:取引履歴</a>
-        <a href="#operation-management">4-4 レジ:商品管理</a>
+        <a href="#operation-product">3-1. レジ:商品選択</a>
+        <a href="#operation-sales">3-2. レジ:会計</a>
+        <a href="#operation-confirm">3-3. レジ:注文確認</a>
+        <a href="#operation-management">3-4. レジ:商品管理</a>
+        <a href="#operation-history">3-5. レジ:取引履歴</a>
       </div>
     </div>
 
-    <a href="#rezi-system">5. レジシステム</a>
+    <a href="#rezi-system">4. レジシステム</a>
   </div>
 </nav>
 
-<!-- メインコンテンツ -->
-<h2 id="system">1. 本システムについて</h2>
-<p>本システムはブラウザ上で動作する簡易レジです。祭り等のレジ管理を目的に作られています。PC/iPadで動作し、インターネット不要で利用可能です。</p>
+<!-- 章テンプレート -->
+
+<h2 id="system">1. レジシステムについて</h2>
+<p>テスト</p>
+<figure>
+  <img src="images/system.png" alt="レジシステムについて">
+  <figcaption>スクリーンショット</figcaption>
+</figure>
+<p><strong>【使い方】</strong></p>
+<p>テスト</p>
 
 <h2 id="caution">2. 注意事項</h2>
-<p>・オフライン対応ですが、起動にはインターネット接続が必要です。リロードすると再起動扱いになり、オフライン環境では使用できません。<br>
-・長時間使用による熱停止の可能性があります。複数端末の常備を推奨します。<br>
-・iPhone/AndroidはUI非対応なのでPC/iPadで使用してください。</p>
+<p>テスト</p>
+<figure>
+  <img src="images/caution.png" alt="注意事項">
+  <figcaption>スクリーンショット</figcaption>
+</figure>
+<p><strong>【使い方】</strong></p>
+<p>テスト</p>
 
-<h2 id="mechanism">3. 仕組み</h2>
-<p>・履歴等の保存はLocalStorageを利用しています。<br>
-・複数端末のデータ同期はサーバー経由で行います。</p>
+<h2 id="operation-product">3-1. レジ:商品選択</h2>
+<p>テスト</p>
+<figure>
+  <img src="images/product-ipad.png" alt="レジ商品画面">
+  <figcaption>商品画面スクリーンショット</figcaption>
+</figure>
+<p><strong>【使い方】</strong></p>
+<p>テスト</p>
 
-<h2 id="operation">4. 操作方法</h2>
+<h2 id="operation-sales">3-2. レジ:会計</h2>
+<p>テスト</p>
+<figure>
+  <img src="images/sales-ipad.png" alt="レジ会計画面">
+  <figcaption>会計画面スクリーンショット</figcaption>
+</figure>
+<p><strong>【使い方】</strong></p>
+<p>テスト</p>
 
-<h3 id="operation-product">4-1 レジ:商品画面</h3>
-<p>商品画面の説明</p>
+<h2 id="operation-confirm">3-3. レジ:注文確認</h2>
+<p>テスト</p>
+<figure>
+  <img src="images/confirm-ipad.png" alt="注文確認画面">
+  <figcaption>注文確認画面スクリーンショット</figcaption>
+</figure>
+<p><strong>【使い方】</strong></p>
+<p>テスト</p>
 
-<h3 id="operation-sales">4-2 レジ:会計</h3>
-<p>会計画面の説明</p>
+<h2 id="operation-management">3-4. レジ:商品管理</h2>
+<p>テスト</p>
+<figure>
+  <img src="images/management-ipad.png" alt="商品管理画面">
+  <figcaption>商品管理画面スクリーンショット</figcaption>
+</figure>
+<p><strong>【使い方】</strong></p>
+<p>テスト</p>
 
-<h3 id="operation-history">4-3 レジ:取引履歴</h3>
-<p>取引履歴の説明</p>
+<h2 id="operation-history">3-5. レジ:取引履歴</h2>
+<p>テスト</p>
+<figure>
+  <img src="images/history-ipad.png" alt="取引履歴画面">
+  <figcaption>取引履歴画面スクリーンショット</figcaption>
+</figure>
+<p><strong>【使い方】</strong></p>
+<p>テスト</p>
 
-<h3 id="operation-management">4-4 レジ:商品管理</h3>
-<p>商品管理の説明</p>
-
-<h2 id="rezi-system">5. レジシステム</h2>
-<p><a href="https://sunaneko1223.github.io/ReziSystem/" target="_blank" class="button-link">レジシステム本体はこちら</a></p>
+<h2 id="rezi-system">4. レジシステム</h2>
+<p>
+ <a href="https://sunaneko1223.github.io/ReziSystem_v2/"target=_blank" class="button-link">
+    レジシステム本体はこちら
+  </a>
+</p>
 
 <!-- モーダル -->
 <div id="modal" class="modal">
@@ -99,7 +136,7 @@
 </div>
 
 <script>
-  // 画像モーダル
+  // モーダル用画像クリック
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modal-img');
   const modalClose = document.getElementsByClassName('modal-close')[0];
@@ -126,7 +163,7 @@
     }
   });
 
-  // サブ章折りたたみ
+  // 操作方法サブ章折りたたみ
   document.querySelectorAll('.toc-toggle').forEach(toggle => {
     toggle.addEventListener('click', () => {
       toggle.parentElement.classList.toggle('active');
